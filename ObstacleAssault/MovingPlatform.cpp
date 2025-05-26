@@ -7,7 +7,7 @@ AMovingPlatform::AMovingPlatform()
 
 void AMovingPlatform::BeginPlay()
 {
-	GetWorldTimerManager().SetTimer(MyTimerHandle, this, &AMovingPlatform::RotatingPlatform, 5.0f, true);
+	GetWorldTimerManager().SetTimer(MyTimerHandle, this, &AMovingPlatform::RotatingPlatform, Time, true);
 	Super::BeginPlay();
 
 	StartLocation = GetActorLocation();

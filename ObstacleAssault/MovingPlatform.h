@@ -26,14 +26,16 @@ private:
 	UPROPERTY(EditAnywhere, Category="Moving Platform")
 	float MoveDistance = 100;
 
+	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	bool DoesPlatformRotate = false;
+
+	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	int Time = 0;
+
 	UPROPERTY(EditAnywhere, Category="Rotation")
 	FRotator RotationVelocity;
 
-	UPROPERTY(EditAnywhere, Category="Rotating Platform")
-	FRotator ActorRotation = FRotator(0, 0, 0);
 
-	UPROPERTY(EditAnywhere, Category="Rotating Platform")
-	bool DoesPlatformRotate = false;
 
 	FVector StartLocation;
 

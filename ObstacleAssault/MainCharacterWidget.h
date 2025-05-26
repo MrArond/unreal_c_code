@@ -18,4 +18,6 @@ UFUNCTION(BlueprintCallable, Category = "HealthBar")
 
 	UPROPERTY(EditAnywhere, meta = (BindWidget))
 	class UProgressBar* HealthBar;
+
+
 };
