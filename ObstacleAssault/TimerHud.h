@@ -2,13 +2,24 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
-#include "TimerHud.generated.h"
+#include "TimerHUD.generated.h"
 
 UCLASS()
-class OBSTACLEASSAULT_API ATimerHud : public AHUD
+class OBSTACLEASSAULT_API ATimerHUD : public AHUD
 {
-    GENERATED_BODY()
+	GENERATED_BODY()
 
 public:
-    virtual void DrawHUD() override;
+	ATimerHUD();
+
+protected:
+	virtual void DrawHUD() override;
+
+private:
+	float TimeElapsed;
+	bool bIsTimePaused; // Flaga do zatrzymania czasu
+
+public:
+	// Funkcja do wstrzymywania czasu
+	void PauseTime(bool bPause);
 };

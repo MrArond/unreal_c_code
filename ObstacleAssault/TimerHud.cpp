@@ -1,22 +1,34 @@
-#include "TimerHud.h"
+#include "TimerHUD.h"
 #include "Engine/Canvas.h"
 #include "Engine/Font.h"
 #include "Engine/Engine.h"
 
-void ATimerHud::DrawHUD()
+ATimerHUD::ATimerHUD()
 {
-    Super::DrawHUD();
+	TimeElapsed = 0.0f;
+	bIsTimePaused = false;
+}
 
-    if (Canvas == nullptr)
-        return;
+void ATimerHUD::DrawHUD()
+{
+	Super::DrawHUD();
 
-    float TimeSeconds = GetWorld()->GetTimeSeconds();
-    FString TimerText = FString::Printf(TEXT("Czas: %.2f s"), TimeSeconds);
-    FVector2D ScreenPosition(50, 50);
+	if (!bIsTimePaused)
+	{
+		TimeElapsed += GetWorld()->GetDeltaSeconds(); // Liczymy czas, jeśli nie jest wstrzymany
+	}
 
-    // Pobierz domyślny duży font Unreal Engine
-    UFont* Font = GEngine->GetLargeFont();
+	FString TimeText = FString::Printf(TEXT("Time: %.2f"), TimeElapsed);
 
-    Canvas->SetDrawColor(FColor::White);
-    Canvas->DrawText(Font, TimerText, ScreenPosition.X, ScreenPosition.Y, 1.f, 1.f, FFontRenderInfo());
+	FVector2D ScreenPosition(50, 50);
+
+	UFont* Font = GEngine->GetLargeFont();
+
+	Canvas->SetDrawColor(FColor::Black);
+	Canvas->DrawText(Font, TimeText, ScreenPosition.X, ScreenPosition.Y, 1.f, 1.f, FFontRenderInfo());
+}
+
+void ATimerHUD::PauseTime(bool bPause)
+{
+	bIsTimePaused = bPause;
 }

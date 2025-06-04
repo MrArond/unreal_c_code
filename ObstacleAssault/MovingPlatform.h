@@ -31,6 +31,8 @@ private:
 
 	UPROPERTY(EditAnywhere, Category="Moving Platform")
 	int Time = 0;
+	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	float dmg = 0;
 
 	UPROPERTY(EditAnywhere, Category="Rotation")
 	FRotator RotationVelocity;
